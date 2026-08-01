@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<title>A Special Surprise for Salma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Ambient floating layer, present across pages -->
+  <div class="ambient-layer" id="ambientLayer" aria-hidden="true"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <span class="loader-cup">☕</span>
+      <p class="loader-text">brewing something warm<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+    </div>
+  </div>
+
+  <!-- ============ PAGE 1 : LANDING / COUNTDOWN ============ -->
+  <section id="page1" class="page page-landing">
+    <div class="stars" aria-hidden="true"></div>
+
+    <div class="landing-content">
+      <p class="eyebrow fade-in">a gift, wrapped in time</p>
+      <h1 class="hero-title fade-in delay-1">A Special Surprise<br>Is Waiting&hairsp;&hellip; <span class="gift-emoji">🎁</span></h1>
+
+      <div class="clock-card fade-in delay-2">
+        <div class="clock" id="liveClock">--:--:--</div>
+        <div class="date" id="liveDate">Loading date&hellip;</div>
+      </div>
+
+      <div class="countdown-card glass fade-in delay-3">
+        <p class="countdown-label">Unlocks in</p>
+        <div class="countdown-grid" id="countdown">
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-days">00</span>
+            <span class="countdown-word">Days</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-hours">00</span>
+            <span class="countdown-word">Hours</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-minutes">00</span>
+            <span class="countdown-word">Minutes</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-number" id="cd-seconds">00</span>
+            <span class="countdown-word">Seconds</span>
+          </div>
+        </div>
+        <p class="countdown-target">3 August 2026 · 12:00 AM (PKT)</p>
+      </div>
+
+      <div class="unlock-area fade-in delay-4">
+        <button class="btn btn-locked" id="lockedBtn" disabled>
+          <span class="lock-icon">🔒</span> Surprise Locked
+        </button>
+        <button class="btn btn-open hidden" id="openBtn">
+          <span class="gift-icon">🎁</span> OPEN YOUR SURPRISE
+        </button>
+        <p class="unlock-note" id="unlockNote">This surprise will unlock on<br><strong>3 August 2026 · 12:00 AM (PKT)</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 2 : SECRET NAME ============ -->
+  <section id="page2" class="page page-secret hidden">
+    <div class="secret-card glass fade-in">
+      <span class="secret-icon">🗝️</span>
+      <h2 class="secret-heading">One Last Step&hellip;</h2>
+      <p class="secret-text">Please enter your secret name to continue.</p>
+
+      <form id="secretForm" class="secret-form" autocomplete="off">
+        <input type="text" id="secretInput" class="secret-input" placeholder="Enter secret name" aria-label="Secret name" />
+        <button type="submit" class="btn btn-continue">Continue</button>
+      </form>
+
+      <p class="secret-error hidden" id="secretError">❌ That's not the secret name. Please try again.</p>
+
+      <div class="secret-success hidden" id="secretSuccess">
+        <span class="sparkle-burst">✨</span>
+        <p>Welcome in&hellip;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 3 : CELEBRATION ============ -->
+  <section id="page3" class="page page-celebration hidden">
+
+    <canvas id="confettiCanvas"></canvas>
+    <canvas id="fireworksCanvas"></canvas>
+
+    <div class="celebration-content">
+
+      <!-- Music player -->
+      <div class="music-player glass">
+        <button id="musicToggle" class="music-btn" aria-label="Play music">
+          <span id="musicIcon">▶</span>
+        </button>
+        <div class="music-info">
+          <span class="music-title">A little tune for you</span>
+          <span class="music-sub">tap to play</span>
+        </div>
+        <audio id="bgMusic" loop preload="none">
+          <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_c8e70c5f7a.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <!-- Main card -->
+      <div class="birthday-card glass fade-in">
+        <div class="ribbon">✦</div>
+        <p class="script-eyebrow">celebrating you today</p>
+        <h1 class="birthday-heading">🎉 Happy Birthday<br><span class="name-script">Salma</span> ☕</h1>
+        <p class="typewriter-line" id="typewriterLine"></p>
+      </div>
+
+      <!-- Wish card -->
+      <div class="wish-card glass fade-in">
+        <span class="quote-mark">“</span>
+        <p class="wish-text">
+          Dear Salma, wishing you the happiest of birthdays. May this year bring you good health, peace of mind, and every success you're working toward. May your days be filled with laughter, your heart with contentment, and your future with bright, beautiful possibilities. May Allah bless you abundantly, keep you and your loved ones safe, and reward your kindness in every way. Thank you for being the warm, wonderful person you are. Here's to another year of you, exactly as you are.
+        </p>
+        <span class="quote-mark quote-mark-end">”</span>
+      </div>
+
+      <!-- Ending -->
+      <div class="ending-section fade-in">
+        <p class="ending-thanks">Thank You for Opening This Birthday Surprise ❤️</p>
+        <p class="ending-sub">Wishing you countless smiles, beautiful memories, and a wonderful year ahead.</p>
+        <p class="ending-name">Happy Birthday, Salma ☕</p>
+
+        <div class="footer">
+          <p class="made-with">Made with ❤️</p>
+          <p class="best-wishes">Best Wishes From</p>
+          <p class="signers">Tanzil Ur Rehman<br><span class="amp">&amp;</span><br>Inam Ul Haq</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to top -->
+  <button id="backToTop" class="back-to-top hidden" aria-label="Back to top">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
